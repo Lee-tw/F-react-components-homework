@@ -5,6 +5,7 @@ import ChatBox from './ChatBox/ChatBox';
 import ChatInput from './ChatInput/ChatInput';
 import shopData from '../data/shop.json';
 import answersData from '../data/answers.json';
+import { ROLE } from '../constants';
 
 class Chat extends Component {
   constructor(props, context) {
@@ -12,6 +13,7 @@ class Chat extends Component {
     this.state = {
       shop: {},
       messages: [],
+      sentMessage: '',
     };
   }
 
@@ -27,13 +29,24 @@ class Chat extends Component {
     }, 1000);
   }
 
+  onSubmit = () => {
+    if (this.state.sentMessage.length > 0) {
+      const userMessage = { text: this.state.sentMessage, role: ROLE.CUSTOMER };
+      const pushedMessages = this.state.messages.concat(userMessage);
+      this.setState({messages: pushedMessages});
+    }
+  };
+
   render() {
     const { shop, messages } = this.state;
     return (
       <main className="Chat">
         <ChatHeader shop={shop} />
         <ChatBox messages={messages} />
-        <ChatInput />
+        <ChatInput
+            onSubmit={this.onSubmit}
+            onChange={event => this.setState({ sentMessage: event.target.value })}
+            value={this.state.sentMessage}/>
       </main>
     );
   }
