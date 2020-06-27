@@ -32,6 +32,7 @@ class Chat extends Component {
     if (this.state.sentMessage.length > 0) {
       const sentMessageInfo = { text: this.state.sentMessage, role: ROLE.CUSTOMER };
       const messages = this.state.messages.concat(sentMessageInfo);
+      this.setState({messages});
 
       const responseMessage = answersData.filter((answer) => {
         return answer.tags.reduce((pre, cur) => {
@@ -44,7 +45,9 @@ class Chat extends Component {
       });
 
       const conversation = messages.concat(responseMessage);
-      this.setState({messages: conversation});
+      setTimeout(() => {
+        this.setState({messages: conversation});
+      }, 1000);
     }
   };
 
