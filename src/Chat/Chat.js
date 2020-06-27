@@ -13,7 +13,6 @@ class Chat extends Component {
     this.state = {
       shop: {},
       messages: [],
-      sentMessage: '',
     };
   }
 
@@ -31,9 +30,21 @@ class Chat extends Component {
 
   onSubmit = () => {
     if (this.state.sentMessage.length > 0) {
-      const userMessage = { text: this.state.sentMessage, role: ROLE.CUSTOMER };
-      const pushedMessages = this.state.messages.concat(userMessage);
-      this.setState({messages: pushedMessages});
+      const sentMessageInfo = { text: this.state.sentMessage, role: ROLE.CUSTOMER };
+      const messages = this.state.messages.concat(sentMessageInfo);
+
+      const responseMessage = answersData.filter((answer) => {
+        return answer.tags.reduce((pre, cur) => {
+          if (pre)
+            return true;
+          if (this.state.sentMessage.includes(cur))
+            return true;
+          return false;
+        }, false)
+      });
+
+      const conversation = messages.concat(responseMessage);
+      this.setState({messages: conversation});
     }
   };
 
