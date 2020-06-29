@@ -10,6 +10,20 @@
   justify-content: center;
   align-items: center;
 
+  .link {
+    position: absolute;
+    margin-left: -150px;
+    margin-top: 2px;
+
+    img {
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+    }
+  }
+
   .logo {
     width: 30px;
     height: 30px;
@@ -25,3 +39,5 @@
     font-weight: 300;
   }
 }
+
+

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
+import {BrowserRouter, Route} from "react-router-dom";
 import Welcome from '../welcome/Welcome'
-import {BrowserRouter, Link, Route} from "react-router-dom";
 import Chat from "../Chat/Chat";
 import ComingSoon from "../comingSoon/ComingSoon";
 

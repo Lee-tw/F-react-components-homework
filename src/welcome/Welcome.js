@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import Chat from '../Chat/Chat';
-import ComingSoon from '../comingSoon/ComingSoon'
+import { Link } from 'react-router-dom';
 import './Welcome.scss';
-import ChatHeader from "../Chat/ChatHeader/ChatHeader";
-import ChatBox from "../Chat/ChatBox/ChatBox";
-import ChatInput from "../Chat/ChatInput/ChatInput";
 import shopData from '../data/shop.json';
 
 class Welcome extends Component {
@@ -27,13 +22,13 @@ class Welcome extends Component {
                 <footer className="footer">
                     <ul>
                         <li>
-                            <Link to="/chat">客服</Link>
+                            <Link to="/chat" className="link">客服</Link>
                         </li>
                         <li>
-                            <Link to="/activity">6.18活动</Link>
+                            <Link to="/activity" className="link">6.18活动</Link>
                         </li>
                         <li>
-                            <Link to="/about">关于我们</Link>
+                            <Link to="/about" className="link">关于我们</Link>
                         </li>
                     </ul>
                 </footer>
