@@ -15,8 +15,9 @@
     "lint": "eslint \"src/\" --cache --fix --format table"
   },
   "dependencies": {
-    "react": "^16.9.0",
+    "react": "^16.13.1",
     "react-dom": "^16.9.0",
+    "react-router-dom": "^5.2.0",
     "sass": "^1.26.5"
   },
   "devDependencies": {
